@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="user">
+    <!-- 检查用户名唯一 -->
+    <select id="checkUsername" parameterType="String" resultType="User">
+        select uid from tb_user
+        where userName=#{userName}
+    </select>
+
+
+    <!-- 新建用户 -->
+    <insert id="regUser" parameterType="User">
+       insert into tb_user (uid,userName,password,status,regTime,role,realName,sex,level)
+		values (#{uid},#{userName},#{password},0,UNIX_TIMESTAMP(now()),3,#{realName},#{sex},#{level})
+    </insert>
+
+    <!--更新用户信息-->
+    <update id="updateUserInfo" parameterType="User">
+        update tb_user set realName = #{realName} where uid = #{uid}
+    </update>
+
+    <!--用户登录-->
+    <select id="login" parameterType="User" resultType="User">
+        select uid from tb_user where userName = #{userName} and password = #{password}
+    </select>
+
+    <!--获取用户详情-->
+    <select id="getUserInfo" parameterType="User" resultType="User">
+        select * from tb_user where uid = #{uid}
+    </select>
+
+    <!--更新用户密码-->
+    <update id="updateUserPassword" parameterType="User">
+        update tb_user set password = #{password} where userName = #{userName}
+    </update>
+
+</mapper>
