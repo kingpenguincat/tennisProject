@@ -5,7 +5,7 @@ package bean;
  */
 public class Game {
     private int id;
-    private String name;
+    private String name; //game的名称
     private String rewardId;
 
 }
