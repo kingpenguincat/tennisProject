@@ -12,12 +12,15 @@
     <typeAliases>
         <typeAlias type="bean.Advertisement" alias="Advertisement"/>
         <typeAlias type="bean.User" alias="User"/>
+        <typeAlias type="bean.Game" alias="Game"/>
+        <typeAlias type="form.GameForm" alias="GameForm"/>
 
     </typeAliases>
 
     <mappers>
         <mapper resource="mapper/Advertisement.xml"/>
         <mapper resource="mapper/User.xml"/>
+        <mapper resource="mapper/Game.xml"/>
 
     </mappers>
 

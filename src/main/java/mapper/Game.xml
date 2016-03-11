@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="game">
+
+    <!-- 新建比赛 -->
+    <insert id="insertGame" parameterType="GameForm">
+        insert into tb_game (name,enrollStart,enrollEnd,gameStart,gameEnd,firstPrice,secondPrice,
+        allowSecond,allowDirectSecond,rule,attention,host,organizer,media,isWXPay,adminId,subAdminId,rootId,isShareFriend,
+        enrollCount,isFemaleFree,isMemberHalfPrice,commercialId,status,scoring,champion,lng,lat)
+        values (#{name},#{enrollStart},#{enrollEnd},#{gameStart},#{gameEnd},#{firstPrice},#{secondPrice},
+        #{allowSecond},#{allowDirectSecond},#{rule},#{attention},#{host},#{organizer},#{media},#{isWXPay},#{adminId},#{subAdminId},#{rootId},#{isShareFriend},
+        #{enrollCount},#{isFemaleFree},#{isMemberHalfPrice},#{commercialId},#{status},#{scoring},#{champion},#{lng},#{lat})
+    </insert>
+
+    <!--修改比赛-->
+    <update id="updateGame" parameterType="GameForm">
+        UPDATE tb_game set name=#{name} and enrollStart=#{enrollStart} and enrollEnd=#{enrollEnd} and gameStart=#{gameStart} and gameEnd=#{gameEnd}
+        and firstPrice = #{firstPrice} and secondPrice=#{secondPrice} and allowSecond = #{allowSecond} and allowDirectSecond=#{allowDirectSecond}
+        and rule = #{rule} and attention=#{attention} and host = #{host} and organizer=#{organizer} and media=#{media} and
+        isWXPay = #{isWXPay} and adminId=#{adminId} and subAdminId=#{subAdminId} and rootId = #{rootId} and isShareFriend = #{isShareFriend}
+        and enrollCount=#{enrollCount} and isFemaleFree=#{isFemaleFree} and isMemberHalfPrice = #{isMemberHalfPrice} and commercialId=#{commercialId}
+        and status=#{status} and scoring=#{scoring} and champion=#{champion} and lng = #{lng} and lat =#{lat}
+    </update>
+
+    <!--获取附近的酒店-->
+    <select id="getNearByHotelInfo" parameterType="GameForm" resultType="Game">
+        select * from tb_game
+        <if test='orderBy!=null and orderBy =="champion"'>
+            order by champion
+        </if>
+        <if test='orderBy!=null and orderBy =="time"'>
+            order by gameStart
+        </if>
+    </select>
+
+
+</mapper>
