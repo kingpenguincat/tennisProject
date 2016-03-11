@@ -60,23 +60,23 @@ public class UserController {
     public Map register(UserForm userForm){
         System.out.println("开始注册");
         Map map = new HashMap();
-        String username = userForm.getUserName();
-        String realname = userForm.getRealName();
+        String userName = userForm.getUserName();
+        String realName = userForm.getRealName();
         String level = userForm.getLevel();
         int sex = Integer.valueOf(userForm.getSex());
         String password = userForm.getPassword();
         try{
-            List<User> users = appUserService.checkUsername(username);
+            List<User> users = appUserService.checkUsername(userName);
             if(users.size()!=0){
                 RespStatusUtil.error("用户名已经存在", map);
             }else{
                 System.out.println("开始注册");
                 User u = new User();
                 u.setUid(Udid.get32UUID());
-                u.setUserName(username);
+                u.setUserName(userName);
                 u.setPassword(password);
                 u.setSex(sex);
-                u.setRealName(realname);
+                u.setRealName(realName);
                 u.setLevel(level);
                 String result = appUserService.registerUsername(u);
                 if(result!="0"){

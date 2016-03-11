@@ -1,11 +1,11 @@
-package bean;
+package form;
 
 /**
- * Created by liupeng on 16/3/5.
+ * Created by liupeng on 16/3/9.
  */
-public class Game {
+public class GameForm {
     private int id;
-    private String name; //game的名称
+    private String name;
     private String rewardId;
     private String enrollStart;
     private String enrollEnd;
@@ -30,32 +30,42 @@ public class Game {
     private int isMemberHalfPrice;
     private String commercialId;
     private int status;
-    private Double lng;
-    private Double lat;
+    private String lng;
+    private String lat;
 
-    public Double getDistance() {
-        return distance;
+    public String getOrderBy() {
+        return orderBy;
     }
 
-    public void setDistance(Double distance) {
-        this.distance = distance;
+    public void setOrderBy(String orderBy) {
+        this.orderBy = orderBy;
     }
 
-    private Double distance;
+    private String orderBy;
 
-    public Double getLng() {
+    public int getPage() {
+        return page;
+    }
+
+    public void setPage(int page) {
+        this.page = page;
+    }
+
+    private int page;
+
+    public String getLng() {
         return lng;
     }
 
-    public void setLng(Double lng) {
+    public void setLng(String lng) {
         this.lng = lng;
     }
 
-    public Double getLat() {
+    public String getLat() {
         return lat;
     }
 
-    public void setLat(Double lat) {
+    public void setLat(String lat) {
         this.lat = lat;
     }
 
@@ -67,15 +77,17 @@ public class Game {
         this.champion = champion;
     }
 
-    public String getGameEnd() {
-        return gameEnd;
-    }
-
-    public void setGameEnd(String gameEnd) {
-        this.gameEnd = gameEnd;
-    }
-
     private int champion;
+
+    public String getEquipmentProvider() {
+        return equipmentProvider;
+    }
+
+    public void setEquipmentProvider(String equipmentProvider) {
+        this.equipmentProvider = equipmentProvider;
+    }
+
+    private String equipmentProvider;
 
     public int getId() {
         return id;
@@ -125,11 +137,11 @@ public class Game {
         this.gameStart = gameStart;
     }
 
-    public String getGanmeEnd() {
+    public String getGameEnd() {
         return gameEnd;
     }
 
-    public void setGanmeEnd(String ganmeEnd) {
+    public void setGameEnd(String ganmeEnd) {
         this.gameEnd = ganmeEnd;
     }
 
@@ -294,5 +306,4 @@ public class Game {
     }
 
     private int scoring;
-
 }
